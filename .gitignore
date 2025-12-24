@@ -1,0 +1,43 @@
+# === Python bytecode ===
+__pycache__/
+*.py[cod]
+*$py.class
+
+# === Virtual environments ===
+.venv/
+venv/
+env/
+
+# === Jupyter ===
+.ipynb_checkpoints/
+
+# === Packaging ===
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# === Logs & caches ===
+*.log
+.cache/
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
+
+# === IDEs / editors ===
+.vscode/
+.idea/
+
+# === Coverage / testing ===
+.coverage
+htmlcov/
+.pytest_cache/
+
+# === MyPy / type checkers ===
+.mypy_cache/
+.pytype/
+
+# === Temporary files ===
+*.tmp
+*.swp
