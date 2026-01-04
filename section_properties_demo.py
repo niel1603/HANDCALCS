@@ -8,7 +8,3 @@ registry = SectionRegistry()
 sec : SteelSection = registry.get(SectionKey.WF_150x75x5x7, SourceKey.WF_GRP)
 
 print(sec.props.Ix)
-
-
-
-

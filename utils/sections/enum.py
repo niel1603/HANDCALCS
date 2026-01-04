@@ -30,14 +30,28 @@ class SourceInfo:
     standard: str
     loader: Callable
     
+# class SourceKey(Enum):
+#     WF_GRP = SourceInfo(
+#         path=Path(r"D:\COMPUTATIONAL\Python\HANDCALCS\utils\sections\docs\WF GRP.csv"),
+#         standard="JIS 3192",
+#         loader=load_steel_csv,
+#     )
+#     H_GRP = SourceInfo(
+#         path=Path(r"D:\COMPUTATIONAL\Python\HANDCALCS\utils\sections\docs\H GRP.csv"),
+#         standard="JIS 3192",
+#         loader=load_steel_csv,
+#     )
+
+UTILS_DIR = Path(__file__).resolve().parents[1]  # points to utils/
+
 class SourceKey(Enum):
     WF_GRP = SourceInfo(
-        path=Path(r"D:\COMPUTATIONAL\Python\HANDCALCS\utils\sections\docs\WF GRP.csv"),
+        path=UTILS_DIR / "sections" / "docs" / "WF GRP.csv",
         standard="JIS 3192",
         loader=load_steel_csv,
     )
     H_GRP = SourceInfo(
-        path=Path(r"D:\COMPUTATIONAL\Python\HANDCALCS\utils\sections\docs\H GRP.csv"),
+        path=UTILS_DIR / "sections" / "docs" / "H GRP.csv",
         standard="JIS 3192",
         loader=load_steel_csv,
     )
