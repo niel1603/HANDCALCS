@@ -21,9 +21,9 @@ GPa = fp.GPa
 Nm  = fp.N * fp.m
 kNm = fp.kN * fp.m
 
-kg = fp.kg
-kg_m3 = fp.kg / fp.m**3
-kN_m3 = fp.kN / fp.m**3
+# kg, cm:
+cm  = (mm * 10)
+kg = (N * 9.81)
 
 # US:
 inch = fp.inch

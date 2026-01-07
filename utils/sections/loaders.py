@@ -1,8 +1,10 @@
 import csv
-from utils.sections.properties import SteelSection, SteelSectionProps
+from utils.sections.properties import (
+    SteelSection, SteelSectionProps, 
+    CnpGrp)
 from utils.units.structural_units import *
 
-def load_steel_csv(path, standard):
+def load_cnp_grp(path, standard):
     table = {}
 
     with open(path, newline="", encoding="utf-8-sig") as f:
@@ -10,15 +12,21 @@ def load_steel_csv(path, standard):
 
         for r in reader:
             name = r["name"].strip()
-
-            props = SteelSectionProps(
-                A  = float(r["A_cm2"])  * 100 * mm**2,
-                Ix = float(r["Ix_cm4"]) * 1e4 * mm**4,
-                Iy = float(r["Iy_cm4"]) * 1e4 * mm**4,
-                Zx = float(r["Zx_cm3"]) * 1e3 * mm**3,
-                Zy = float(r["Zy_cm3"]) * 1e3 * mm**3,
-                rx = float(r["rx_cm"]) * 10 * mm,
-                ry = float(r["ry_cm"]) * 10 * mm,
+            
+            props = CnpGrp(
+                t  = float(r["t_mm"]) * mm,
+                A  = float(r["A_cm2"]) * cm**2,
+                w  = float(r["w_kg/m"]) * kg/m,
+                Ix = float(r["Ix_cm4"]) * cm**4,
+                Iy = float(r["Iy_cm4"]) * cm**4,
+                Zx = float(r["Zx_cm3"]) * cm**3,
+                Zy = float(r["Zy_cm3"]) * cm**3,
+                rx = float(r["rx_cm"]) * cm,
+                ry = float(r["ry_cm"]) * cm,
+                Cy = float(r["Cy_cm"]) * cm,
+                Xo = float(r["Xo_cm"]) * cm,
+                J  = float(r["J_cm4"]) * cm**4,
+                Cw = float(r["Cw_cm6"]) * cm**6,
             )
 
             table[name] = SteelSection(

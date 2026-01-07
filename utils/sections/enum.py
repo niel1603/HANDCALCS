@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from enum import Enum
-from pathlib import Path
 from typing import Callable
 
-from utils.sections.loaders import load_steel_csv
+from pathlib import Path
+UTILS_DIR = Path(__file__).resolve().parents[1]  # points to utils/
+
+from utils.sections.loaders import load_cnp_grp
 
 # -------------------------------------------------
 # Section identity
@@ -12,10 +14,51 @@ from utils.sections.loaders import load_steel_csv
 from enum import Enum
 
 class SectionKey(Enum):
-    WF_150x75x5x7 = ("WF.150x75x5x7")
-    WF_200x100x5_5x8 = ("WF.200x100x5.5x8")
-    WF_250x125x6x9 = ("WF.250x125x6x9")
-    H_100x100x8x6 = ("H.100x100x8x6")
+    # WF / H sections (existing)
+    WF_150x75x5x7 = "WF.150x75x5x7"
+    WF_200x100x5_5x8 = "WF.200x100x5.5x8"
+    WF_250x125x6x9 = "WF.250x125x6x9"
+    H_100x100x8x6 = "H.100x100x8x6"
+
+    # C 100
+    C_100x50x20x2 = "C100x50x20x2"
+    C_100x50x20x2_3 = "C100x50x20x2.3"
+    C_100x50x20x2_5 = "C100x50x20x2.5"
+    C_100x50x20x2_8 = "C100x50x20x2.8"
+    C_100x50x20x3 = "C100x50x20x3"
+    C_100x50x20x3_2 = "C100x50x20x3.2"
+
+    # C 125
+    C_125x50x20x2 = "C125x50x20x2"
+    C_125x50x20x2_3 = "C125x50x20x2.3"
+    C_125x50x20x2_5 = "C125x50x20x2.5"
+    C_125x50x20x2_8 = "C125x50x20x2.8"
+    C_125x50x20x3 = "C125x50x20x3"
+    C_125x50x20x3_2 = "C125x50x20x3.2"
+
+    # C 150 x 50
+    C_150x50x20x2 = "C150x50x20x2"
+    C_150x50x20x2_3 = "C150x50x20x2.3"
+    C_150x50x20x2_5 = "C150x50x20x2.5"
+    C_150x50x20x2_8 = "C150x50x20x2.8"
+    C_150x50x20x3 = "C150x50x20x3"
+    C_150x50x20x3_2 = "C150x50x20x3.2"
+
+    # C 150 x 65
+    C_150x65x20x2 = "C150x65x20x2"
+    C_150x65x20x2_3 = "C150x65x20x2.3"
+    C_150x65x20x2_5 = "C150x65x20x2.5"
+    C_150x65x20x2_8 = "C150x65x20x2.8"
+    C_150x65x20x3 = "C150x65x20x3"
+    C_150x65x20x3_2 = "C150x65x20x3.2"
+
+    # C 200
+    C_200x75x20x2 = "C200x75x20x2"
+    C_200x75x20x2_3 = "C200x75x20x2.3"
+    C_200x75x20x2_5 = "C200x75x20x2.5"
+    C_200x75x20x2_8 = "C200x75x20x2.8"
+    C_200x75x20x3 = "C200x75x20x3"
+    C_200x75x20x3_2 = "C200x75x20x3.2"
 
     def __init__(self, key: str):
         self._key = key
@@ -29,29 +72,20 @@ class SourceInfo:
     path: Path
     standard: str
     loader: Callable
-    
-# class SourceKey(Enum):
-#     WF_GRP = SourceInfo(
-#         path=Path(r"D:\COMPUTATIONAL\Python\HANDCALCS\utils\sections\docs\WF GRP.csv"),
-#         standard="JIS 3192",
-#         loader=load_steel_csv,
-#     )
-#     H_GRP = SourceInfo(
-#         path=Path(r"D:\COMPUTATIONAL\Python\HANDCALCS\utils\sections\docs\H GRP.csv"),
-#         standard="JIS 3192",
-#         loader=load_steel_csv,
-#     )
-
-UTILS_DIR = Path(__file__).resolve().parents[1]  # points to utils/
 
 class SourceKey(Enum):
-    WF_GRP = SourceInfo(
-        path=UTILS_DIR / "sections" / "docs" / "WF GRP.csv",
+    CNP_GRP = SourceInfo(
+        path=UTILS_DIR / "sections" / "docs" / "CNP GRP.csv",
         standard="JIS 3192",
-        loader=load_steel_csv,
+        loader=load_cnp_grp,
     )
-    H_GRP = SourceInfo(
-        path=UTILS_DIR / "sections" / "docs" / "H GRP.csv",
-        standard="JIS 3192",
-        loader=load_steel_csv,
-    )
+    # WF_GRP = SourceInfo(
+    #     path=UTILS_DIR / "sections" / "docs" / "WF GRP.csv",
+    #     standard="JIS 3192",
+    #     loader=load_steel_csv,
+    # )
+    # H_GRP = SourceInfo(
+    #     path=UTILS_DIR / "sections" / "docs" / "H GRP.csv",
+    #     standard="JIS 3192",
+    #     loader=load_steel_csv,
+    # )

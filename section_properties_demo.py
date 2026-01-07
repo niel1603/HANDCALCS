@@ -5,6 +5,6 @@ from utils.sections.properties import SteelSection
 
 registry = SectionRegistry()
 
-sec : SteelSection = registry.get(SectionKey.WF_150x75x5x7, SourceKey.WF_GRP)
+sec : SteelSection = registry.get(SectionKey.C_150x65x20x3_2, SourceKey.CNP_GRP)
 
 print(sec.props.Ix)
