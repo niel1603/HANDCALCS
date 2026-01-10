@@ -1,6 +1,15 @@
 from dataclasses import dataclass
-from .base import Material
-from ..units.structural_units import *
+
+from src.handcalcs_adapter.units import *
+
+@dataclass(frozen=True)
+class Material:
+    """
+    Base material class.
+    No design logic. No solvers. No assumptions.
+    """
+    name: str
+    source: str
 
 @dataclass(frozen=True)
 class Steel(Material):
