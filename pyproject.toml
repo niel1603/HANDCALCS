@@ -14,8 +14,7 @@ authors = [
 ]
 
 dependencies = [
-    # add runtime deps here, e.g.:
-    # "numpy>=1.26",
+    # add runtime deps here
 ]
 
 [tool.setuptools]
@@ -23,3 +22,7 @@ package-dir = { "" = "src" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+# ✅ THIS IS THE IMPORTANT PART
+[tool.setuptools.package-data]
+handcalcs_adapter = ["data/*.csv"]
